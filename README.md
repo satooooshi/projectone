@@ -9,7 +9,7 @@ Introduction
 ------------
 ### Project I
 A Github repository of an application’s front-end
-- CoverallthedomainsexceptforIDE
+- Cover all the domains except for IDE
 - You can follow a mooc to build the application
 - Courses on Coursera.org
 - Use Github to record the whole process of application development
