@@ -18,4 +18,7 @@ A Github repository of an application’s front-end
 - 2017-11-20
 - sjtuseproj@sjtu.edu.cn
 - The url of your Repository
->>>>>>> cc07e5203544079ddac0093e09edb504565e6989
+
+My applicatoin
+------------
+simple photo  library.
