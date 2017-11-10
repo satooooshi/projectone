@@ -2,17 +2,45 @@
 Images = new Mongo.Collection("images");
 
 if (Meteor.isClient) {
-   Template.images.helpers({images:
-    Images.find({}, {sort:{createdOn: -1, rating:-1}})
+
+    Accounts.ui.config({
+      passwordSignupFields:"USERNAME_AND_EMAIL"
+    });
+
+   Template.images.helpers({
+    images:function(){
+      return Images.find({}, {sort:{createdOn: -1, rating:-1}});
+      console.log(Session.get("userFilter"));
+      if(Session.get("userFilter")){//they set a filter
+        //return Images.find({}, {sort:{createdOn: -1, rating:-1}});
+        return Images.find({createdBy:Session.get("userFilter")}, {sort:{createdOn: -1, rating:-1}});
+      }else{
+        console.log("show all the photos");
+        return Images.find({}, {sort:{createdOn: -1, rating:-1}});
+      }
+
+
+    },
+    getUser:function(user_id){
+      var user=Meteor.users.findOne({_id:user_id});//Meteor.users==user collection
+      if(user){
+        return user.username;
+      }else{
+        return "anonymous";
+      }
+    },
   });
+
+
+
 
     Template.body.helpers({username:function(){
 
-      console.log("HEY here!!"+Meteor.user());
-      console.log(Meteor.user().emails[0].address);
+      console.log("HEY here!!");
+      console.log(Meteor.user());
 
       if(Meteor.user()){
-        return Meteor.user().emails[0].address;
+        return Meteor.user().username;
       }else{
         return " anonymous user";
       }
@@ -46,8 +74,10 @@ if (Meteor.isClient) {
     },
     'click .js-show-image-form':function(event){
       $("#image_add_form").modal('show');
-    }
-
+    },
+    'click .js-set-image-filter':function(event){
+      Session.set("userFilter", this.createdBy);//Session stores key-value pairs
+    },
    });
 
   Template.image_add_form.events({
@@ -55,13 +85,19 @@ if (Meteor.isClient) {
       var img_src, img_alt;
       img_src = event.target.img_src.value;
       img_alt = event.target.img_alt.value;
+      console.log("Image added. ");
       console.log("src: "+img_src+" alt:"+img_alt);
 
-      Images.insert({
-        img_src:img_src,
-        img_alt:img_alt,
-        createdOn:new Date()
-      });
+
+      if(Meteor.user()){//truethy unfalse data
+        Images.insert({
+          img_src:img_src,
+          img_alt:img_alt,
+          createdOn:new Date(),
+          createdBy:Meteor.user()._id,
+        });
+      }
+
        $("#image_add_form").modal('show');
       return false;
     }
