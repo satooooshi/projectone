@@ -46,6 +46,14 @@
   {{#if currentUser}}<!--currentUser==true if loged in, false otherwise-->
   <button class="btn btn-success js-show-image-form">add image</button>
   {{/if}}
+
+  <h2>
+    {{# if filtering_images}}<!--dissappear when filtering_images has false value-->
+    showing images by user : {{getFilterUser}} <a href="#" class="js-unset-image-filter">show all images.</a>
+    {{/ if}}
+  </h2>
+
+
   <div class="row">
   {{#each images}}
   <div class="col-xs-12 col-md-3" id="{{_id}}">
