@@ -1,0 +1,21 @@
+
+<template name="task">
+  <!--checked off tasks have a line through them. This is enabled by the following snippet-->
+  <li class="{{#if checked}}checked{{/if}}">
+      <a href="#" class="delete"><span class="glyphicon glyphicon-trash" aria-hidden="true">  </span></a>
+      <span>{{Like}}</span>
+      <a href="#" class="like"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">  </span></a>
+
+      {{#if favorite}}
+      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+      {{/if}}
+
+      <!--check box, var checked is to be used li class above , if checked, checked is set to true-->
+      <!--<input type="checkbox" checked="{{checked}}" class="toggle-checked" />-->
+      <!--<DIV>はブロック要素であり、<SPAN>はインライン要素, 配置がちょっと変わるだけ-->
+      <a href="#" class="play">
+      <span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
+      <span class="text">{{text}}</span>
+      <a href="#" class="added"><span class="text">{{username}}</span></a>
+  </li>
+</template>
