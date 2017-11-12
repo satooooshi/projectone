@@ -8,23 +8,23 @@ body {
 
   position: absolute;
   top: 0;
-  bottom: 0;
+  bottom :0;
   left: 0;
   right: 0;
-
   padding: 0;
   margin: 0;
 
   font-size: 14px;
 }
 
-
+/*
 .container {
   max-width: 600px;
   margin: 0 auto;
   min-height: 100%;
   background: white;
 }
+*/
 
 header {
   background: #d2edf4;
@@ -102,16 +102,27 @@ ul {
   position: relative;
 }
 
+.addedName{
+  float: right;
+  left: 500px;
+  font-weight: bold;
+  background: none;
+  font-size: 1em;
+  border: none;
+  position: absolute;
+}
+
+/*
 .glyphicon-heart{
   float: right;
-  padding-right: 70px;
+  padding-right: 80px;
   font-weight: bold;
   background: none;
   font-size: 1em;
   border: none;
   position: relative;
 }
-
+*/
 li {
   position: relative;
   list-style: none;

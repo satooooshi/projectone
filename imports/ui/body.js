@@ -18,10 +18,13 @@ Template.body.helpers({//for data transportation give array[{},{},{}, ] to tasks
 // get our tasks from a collection instead of a static array above:
 
 import { Template } from 'meteor/templating';
-import { Tasks } from '../api/tasks.js';
-import './task.js';
 import './body.html';
 import { Meteor } from 'meteor/meteor';
+
+import { Tasks } from '../api/tasks.js';
+import './task.js';
+//import './navbar.js';
+
 
 
 //pass data into templates from JavaScript code
@@ -32,23 +35,43 @@ Template.body.helpers({
 ///return Tasks.find({}, { sort: { createdAt: -1 } });//***default***
     //alphabet order 1: the other way around -1
     //return Tasks.find({}, { sort: { text:1 } });
+    var result=Tasks.find({}, {limit:Session.get("srcLimit")});
+
     if(Session.get("userFilter")){//they set a filter
-      return Tasks.find({username:Session.get("userFilter")}, {sort:{favorite: -1}, limit:Session.get("srcLimit")});
+      console.log("SHOW added by...");
+      result= Tasks.find({username:Session.get("userFilter")}, {limit:Session.get("srcLimit")});
     }else{
       console.log("SHOW ALL..");
-      return Tasks.find({}, {sort:{favorite: -1,}, limit:Session.get("srcLimit")});
+      Session.set("userFilter",undefined);
+      result= Tasks.find({}, {limit:Session.get("srcLimit")});
     }
-    if(Session.get("favoriteFilter")){
 
-      return Tasks.find({favorite:1}, {limit:Session.get("srcLimit")});
+    if(Session.get("favoriteFilter")){
+      if(Session.get("userFilter")){
+        console.log("favorite order");
+        result= Tasks.find({favorite:true, username:Session.get("userFilter")}
+                        ,{limit:Session.get("srcLimit")
+                      });
+      }else{
+        result= Tasks.find({favorite:true}
+                          ,{limit:Session.get("srcLimit")
+                      });
+      }
     }
+
+    if(Session.get("newestFilter")){
+      console.log("newest order");
+      result= Tasks.find({}, {limit:Session.get("srcLimit")});
+    }
+
+    return result;
   },
 });
 //commands below opens a console into your app's local development database.
 //Into the prompt, type:
 //meteor mongo
 //db.tasks.insert({ text: "Hello world!", createdAt: new Date() });
-
+//, {limit:Session.get("srcLimit")}
 
 
 
@@ -91,21 +114,14 @@ Template.body.events({
       text,                  //text:text
       createdAt: new Date(), // current time
       favorite: 0,
-      Like: 0,
+      likeCount:0,
+      likes: [],
       owner: Meteor.userId(),
       username: Meteor.user().username,
+
     });
     // Clear form
     target.text.value = '';
-  },
-  'click .favorites'(){
-    //Session.set("userFilter", this.username);
-    Session.set("favoriteFilter","favorites");
-    console.log("STUG INPLEMENT THIS");
-  },
-  'click .showall'(){
-    console.log("show all clicked");
-    Session.set("userFilter", undefined);
   },
 
 });
