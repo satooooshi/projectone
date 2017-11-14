@@ -17,18 +17,22 @@ getCurrentSrc:function(){
   return Session.get("currentSrc").text;
 },
 
-playPause:function(){
-  if(sound.playing())
-    return "glyphicon glyphicon-pause";
-  else
-    return "glyphicon glyphicon-play";
-},
+
 
 });
 
 //Template."templete name in html".events({});
 Template.navbar.events({
  'click .play'(){
+
+   $(document).ready(function() {
+     var icon = $('.glyphicon glyphicon-step-backward');
+     icon.click(function() {
+        icon.toggleClass('active');
+        return false;
+     });
+   });
+
    if(sound.playing()){
      /*
      var src=Session.get("currentSrc");
