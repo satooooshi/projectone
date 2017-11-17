@@ -14,10 +14,10 @@
 -->
 <div ng-controller="WikiCtrl" id='content'>
 
-  {{>control}}
+  {{>searchBox}}
 
     <div style="width:auto;height:700px;overflow:auto;">
-    {{> stack}}
+    {{> searchResult}}
     </div>
 
     {{> flippingCard}}
@@ -33,12 +33,10 @@
 </body>
 
 
-
-
-<template name="control">
+<template name="searchBox">
 	<div id="control">
 		<div class="ui right action left icon input">
-  			<input type="text" name="text" id="qqq" placeholder="Ask Me Some" ng-model='query'>
+  			<input type="text" id="search-box" placeholder="Ask Me Some" ng-model='query'>
   			<i class="big icon search"></i>
   			<!--<button onclick="location.href='https://en.wikipedia.org/wiki/Special:Random';" class="ui teal right labeled icon button" >
         <button class="ui teal right labeled icon button" >
@@ -51,24 +49,31 @@
 
 
 
-<template name="stack">
-  <h2>Stack</h2>
-  <div class="ui rating"></div>
+<template name="searchResult">
+  <h2>searchResult</h2>
 
-
-  <div class="ui three column divided grid">
-
-  <div class="row">
-    {{#each tasks}}
-    <div class="column">
-      {{> flippingCard}}
+  <div id='search-result'>
+    <div id="search-meta">
+      {{#if isLoading}}
+        searching ...
+      {{/if}}
     </div>
-    {{/each}}
+
+    <div class="ui three column divided grid">
+    <div class="row">
+      {{#each tasks}}
+      <div class="column">
+        {{> flippingCard}}
+      </div>
+      {{/each}}
+    </div>
   </div>
 
-</div>
+  </div>
+
 
 </template>
+
 
 <template name="ex_buttons">
 
@@ -191,7 +196,7 @@
 
       <div class="content">
         <div class="ui pointing secondary menu">
-          <div class="item active" data-tab="ingredients">Ingredients</div>
+          <div class="item active" data-tab="s">Ingredients</div>
           <div class="item" data-tab="directions">Directions</div>
         </div>
         <div class="ui tab active" data-tab="ingredients">
@@ -229,9 +234,9 @@
     </div>
     <div  class="extra content" >
     <div class="ui labeled icon menu">
-      <a class="item"><i class="wait icon"></i>{{createdAr}}</a>
-      <a class="item"><i class="food icon"></i>{{likes}}</a>
-      <a class="item"><i class="signal icon"></i>{{username}}</a>
+      <a class="item"><i class="wait icon"></i>{{packageName}}</a>
+      <a class="item"><i class="food icon"></i>{{description}}</a>
+      <a class="item"><i class="signal icon"></i>{{description}}</a>
     </div>
     </div>
 </template>
