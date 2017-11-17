@@ -1,28 +1,262 @@
 <head>
-  <title>tuneBase</title>
-</head>
-<!--
-<body>
-  <h1>Welcome to Meteor!</h1>
+	<title>askMe</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular-resource.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.0/semantic.min.css">
 
-  {{> hello}}
-  {{> info}}
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="app.js"></script>
+</head>
+
+<body>
+<!--
+
+-->
+<div ng-controller="WikiCtrl" id='content'>
+
+  {{>control}}
+
+    <div style="width:auto;height:1000px;overflow:auto;">
+    {{> stack}}
+    </div>
+
+    {{> flippingCard}}
+    {{> ex_buttons}}
+    {{> musicbar}}
+
+
+	<div class="ui raised segment" ng-repeat='data in wikiData'>
+  		<h4 class="ui header">{{data.name}}</h4>
+  		<p>{{data.snip}}</p><a href="{{data.link}}">Read More <i class="small external icon"></i></a>
+  	</div>
+</div>
 </body>
 
 
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+
+<template name="control">
+	<div id="control">
+		<div class="ui right action left icon input">
+  			<input type="text" name="text" id="qqq" placeholder="Ask Me Some" ng-model='query'>
+  			<i class="big icon search"></i>
+  			<!--<button onclick="location.href='https://en.wikipedia.org/wiki/Special:Random';" class="ui teal right labeled icon button" >
+        <button class="ui teal right labeled icon button" >
+    			<i class="random icon"></i>
+    			Go
+  			</button>-->
+		</div>
+	</div>
 </template>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+
+
+<template name="stack">
+  <h2>Stack</h2>
+  <div class="ui rating"></div>
+
+
+  <div class="ui three column divided grid">
+
+  <div class="row">
+    {{#each tasks}}
+    <div class="column">
+      {{> flippingCard}}
+    </div>
+    {{/each}}
+  </div>
+
+</div>
+
 </template>
--->
+
+<template name="ex_buttons">
+
+
+    <h2>Buttons</h2>
+    <button class="ui button">{{greeting}}</button>
+    <button class="ui primary button">Hello</button>
+    <button class="ui secondary button">Hello</button>
+    <hr>
+    <button class="ui button"><i class="cloud icon"></i></button>
+    <button class="ui primary button"><i class="cloud icon"></i></button>
+    <button class="ui secondary button"><i class="cloud icon"></i></button>
+    <hr>
+    <div class="ui labeled icon button">
+    <i class="pause icon"></i>
+    Pause
+    </div>
+    <div class="ui right labeled icon button">
+    <i class="right arrow icon"></i>
+    Next
+    </div>
+    <hr>
+    <div class="ui basic button">
+    <i class="icon user"></i>
+    Add Friend
+    </div>
+    <hr>
+    <div class="ui inverted segment">
+    <div class="ui inverted button">Standard</div>
+    <div class="ui inverted black button">Black</div>
+    <div class="ui inverted yellow button">Yellow</div>
+    <div class="ui inverted green button">Green</div>
+    <div class="ui inverted blue button">Blue</div>
+    <div class="ui inverted orange button">Orange</div>
+    <div class="ui inverted purple button">Purple</div>
+    <div class="ui inverted pink button">Pink</div>
+    <div class="ui inverted red button">Red</div>
+    <div class="ui inverted teal button">Teal</div>
+    </div>
+    <hr>
+    <div class="ui buttons">
+    <div class="ui button">One</div>
+    <div class="ui button">Two</div>
+    <div class="ui button">Three</div>
+    </div>
+    <hr>
+    <div class="ui icon buttons">
+    <div class="ui button"><i class="align left icon"></i></div>
+    <div class="ui button"><i class="align center icon"></i></div>
+    <div class="ui button"><i class="align right icon"></i></div>
+    <div class="ui button"><i class="align justify icon"></i></div>
+    </div>
+    <div class="ui icon buttons">
+    <div class="ui button"><i class="bold icon"></i></div>
+    <div class="ui button"><i class="underline icon"></i></div>
+    <div class="ui button"><i class="text width icon"></i></div>
+    </div>
+    <hr />
+    <div class="ui buttons">
+    <div class="ui button">Cancel</div>
+    <div class="or"></div>
+    <div class="ui positive button">Save</div>
+    </div>
+    <hr />
+    <div class="ui disabled button">
+    <i class="user icon"></i>
+    Followed
+    </div>
+    <hr />
+    <div class="ui loading button">Loading</div>
+    <div class="ui basic loading button">Loading</div>
+    <div class="ui primary loading button">Loading</div>
+    <div class="ui secondary loading button">Loading</div>
+    <hr />
+    <div class="ui facebook button">
+    <i class="facebook icon"></i>
+    Facebook
+    </div>
+    <div class="ui twitter button">
+    <i class="twitter icon"></i>
+    Twitter
+    </div>
+    <div class="ui google plus button">
+    <i class="google plus icon"></i>
+    Google Plus
+    </div>
+    <div class="ui vk button">
+    <i class="vk icon"></i>
+    VK
+    </div>
+    <div class="ui linkedin button">
+    <i class="linkedin icon"></i>
+    LinkedIn
+    </div>
+    <div class="ui instagram button">
+    <i class="instagram icon"></i>
+    Instagram
+    </div>
+    <div class="ui youtube button">
+    <i class="youtube icon"></i>
+    YouTube
+    </div>
+</template>
+
+
+<template name="flippingCard">
+  <div class="ui move reveal">
+
+
+  <div class="visible content"><!--I AM visible-->
+    <div class="ui card">
+
+        {{> toppic}}
+    </div>
+  </div>
+
+
+  <div class="hidden content"><!--I AM reversal-->
+    <div class="ui card">
+
+      <div class="content">
+        <div class="ui pointing secondary menu">
+          <div class="item active" data-tab="ingredients">Ingredients</div>
+          <div class="item" data-tab="directions">Directions</div>
+        </div>
+        <div class="ui tab active" data-tab="ingredients">
+          {{> ingredients}}
+        </div>
+        <div class="ui tab" data-tab="directions">
+          {{> directions}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</template>
+
+<template name="musicbar">
+  <div class="ui buttons">
+  <div class="ui button"><i class="backward icon"></i></div>
+  <div class="ui button"><i class="play icon"></i></div>
+  <div class="ui button"><i class="forward icon"></i></div>
+  <div class="ui button"><i class="volume up icon"></i></div>
+
+  </div>
+</template>
+
+
+<template name="toppic">
+  <img class="ui image" src="http://mrg.bz/TRRrQJ">
+    <div class="content">
+    <div class="header">Pizza Margherita</div>
+    <div class="description">
+      Invented in Naples.
+    </div>
+    </div>
+    <div  class="extra content" >
+    <div class="ui labeled icon menu">
+      <a class="item"><i class="wait icon"></i>{{createdAr}}</a>
+      <a class="item"><i class="food icon"></i>{{likes}}</a>
+      <a class="item"><i class="signal icon"></i>{{username}}</a>
+    </div>
+    </div>
+</template>
+
+<template name="ingredients">
+  <h3>For pasta</h3>
+  <div class="ui list">
+    <div class="item"><i class="check circle red icon"></i>2 lb Italian "00" flour or all-purpose flour</div>
+    <div class="item"><i class="check circle red icon"></i>1 oz fresh yeast</div>
+    <div class="item"><i class="check circle red icon"></i>2 cups water</div>
+    <div class="item"><i class="check circle red icon"></i>⅜ oz salt</div>
+  </div>
+  <h3>For dressing</h3>
+    <div class="ui small list">
+      <div class="item"><i class="check circle red icon"></i>½ cup extra virgin olive oil</div>
+      <div class="item"><i class="check circle red icon"></i>1 lb mozzarella cheese</div>
+      <div class="item"><i class="check circle red icon"></i>basil leaves to taste</div>
+    </div>
+    <div class="ui inverted blue button">Like</div>
+</template>
+
+<template name="directions">
+  <div class="ui small list">
+    <div class="item"><span class="ui red circular label">1</span> On a wooden...</div>
+    <div class="item"><span class="ui red circular label">2</span> Knead the dough...</div>
+    <div class="item"><span class="ui red circular label">8</span> Once ready...</div>
+  </div>
+</template>

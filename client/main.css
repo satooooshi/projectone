@@ -1,171 +1,61 @@
-
-/* CSS declarations go here */
 body {
-  font-family: sans-serif;
-  background-color: #315481;
-  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
-  background-attachment: fixed;
-
-  position: absolute;
-  top: 0;
-  bottom :0;
-  left: 0;
-  right: 0;
-  padding: 0;
-  margin: 0;
-
-  font-size: 14px;
+	background: url(https://c2.staticflickr.com/8/7294/9004993292_58782594d3_k.jpg) no-repeat center center fixed !important;
+  /*background: url(https://7-themes.com/data_images/out/9/6798419-high-tech-wallpapers.jpg) no-repeat center center fixed !important;*/
+	background-size: cover;
 }
 
+
+#content {
+	max-width: 900px;
+	margin: auto auto;
+}
+
+
+input[type=text] {
+   font-size: 30px;
+   height: 70px;
+   /*background-color: rgba(255, 255, 255, 0.65) !important;*/
+}
+
+#control {
+	margin: 20px auto;
+	display: flex;
+	flex-direction: row;
+	max-width: 600px;
+}
+
+#random {
+	text-align: center;
+	color: white;
+}
+/* CSS declarations go here */
 /*
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  min-height: 100%;
-  background: white;
-}
+ui pointing secondary menu
+item active
 */
+.ui.move.reveal {
+margin: 20px;
+width: 260px;
+white-space: normal;
 
-header {
-  background: #d2edf4;
-  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
-  padding: 20px 15px 15px 15px;
-  position: relative;
+}
+.ui.card {
+height: 370px;
 }
 
-.login{
-  display: block;
-  position: absolute;
-  top: 30px;
-  right: 30px;
+.ui.labeled.icon.menu .item{
+  min-width: 33.3333%;
+  max-width: 33.3333%;
+  font-size: 0.8em;
+  padding: 6px 2px;
 }
 
-
-
-h1 {
-  font-size: 1.5em;
-  margin: 0;
-  margin-bottom: 10px;
-  display: inline-block;
-  margin-right: 1em;
+.ui.pointing.menu {
+  cursor: pointer;
 }
 
-form {
-  margin-top: 10px;
-  margin-bottom: -10px;
-  position: relative;
+.ui.tab {
+  height: 320px;
+  overflow-y: auto;
 }
-
-
-.new-task input {
-  box-sizing: border-box;
-  padding: 10px 0;
-  background: transparent;
-  border: none;
-  width: 100%;
-  padding-right: 80px;
-  font-size: 1em;
-}
-
-.new-task input:focus{
-  outline: 0;
-}
-
-.show-all{
-  margin-top: 100px;
-  margin-left: 100px;
-}
-
-
-ul {
-  margin: 0;
-  margin-top:10px;
-  padding: 0;
-  background: white;
-}
-
-.delete {
-  float: right;
-  font-weight: bold;
-  background: none;
-  font-size: 1em;
-  border: none;
-  position: relative;
-}
-.like{
-  float: right;
-  padding-right: 50px;
-  font-weight: bold;
-  background: none;
-  font-size: 1em;
-  border: none;
-  position: relative;
-}
-
-.addedName{
-  float: right;
-  left: 500px;
-  font-weight: bold;
-  background: none;
-  font-size: 1em;
-  border: none;
-  position: absolute;
-}
-
-/*
-.glyphicon-heart{
-  float: right;
-  padding-right: 80px;
-  font-weight: bold;
-  background: none;
-  font-size: 1em;
-  border: none;
-  position: relative;
-}
-*/
-li {
-  position: relative;
-  list-style: none;
-  padding: 15px;
-  border-bottom: #eee solid 1px;
-}
-
-li .text {
-  margin-left: 50px;
-}
-
-li.checked {
-  color: #888;
-}
-
-li.checked .text {
-  text-decoration: line-through;
-}
-
-li.private {
-  background: #eee;
-  border-color: #ddd;
-}
-
-header .hide-completed {
-  float: right;
-}
-
-.toggle-private {
-  margin-left: 5px;
-}
-
-@media (max-width: 600px) {
-  li {
-    padding: 12px 15px;
-  }
-
-  .search {
-    width: 150px;
-    clear: both;
-  }
-
-  .new-task input {
-    padding-bottom: 5px;
-  }
-}
+/* CSS declarations go here */
