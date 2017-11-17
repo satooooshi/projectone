@@ -1,0 +1,63 @@
+/* CSS declarations go here */
+body {
+	background: url(https://c2.staticflickr.com/8/7294/9004993292_58782594d3_k.jpg) no-repeat center center fixed !important;
+	background-size: cover;
+}
+
+
+#content {
+	max-width: 900px;
+	margin: auto auto;
+}
+
+
+input[type=text] {
+   font-size: 30px;
+   height: 70px;
+   /*background-color: rgba(255, 255, 255, 0.65) !important;*/
+}
+
+#control {
+	margin: 20px auto;
+	display: flex;
+	flex-direction: row;
+	max-width: 600px;
+}
+
+#random {
+	text-align: center;
+	color: white;
+}
+/* CSS declarations go here */
+/*
+ui pointing secondary menu
+item active
+*/
+
+.ui.move.reveal {
+margin: 20px;
+width: 300px;
+white-space: normal;
+
+}
+.ui.card {
+height: 370px;
+}
+
+.ui.labeled.icon.menu .item{
+  min-width: 33.3333%;
+  max-width: 33.3333%;
+  font-size: 0.8em;
+  padding: 6px 2px;
+}
+
+.ui.pointing.menu {
+  cursor: pointer;
+}
+
+.ui.tab {
+  height: 320px;
+  overflow-y: auto;
+}
+
+/* CSS declarations go here */
