@@ -23,3 +23,6 @@ standard-minifier-css
 standard-minifier-js
 shell-server
 dynamic-import
+easysearch:elasticsearch
+practicalmeteor:chai
+meteortesting:mocha
