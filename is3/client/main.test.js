@@ -26,12 +26,22 @@ describe('Post Service', function () {
         //const postId = PostService.createPost({title: 'Hello'})
 
         //assert.isString(postId);
-    }),
-    it('with a failing test', function() {
-      assert(false, 'Hello World');
-    })
-});
+    });
+    it('with a failing test1', function() {
+      //assert(false, 'Hello World');
+      expect(true).be.true; // trueの時のみtrue
+    });
+    it('with a failing test2', function() {
+      //assert(false, 'Hello World');
+      expect(true).be.true; // trueの時のみtrue
+    });
+    it('with a failing test4', function() {
+      //assert(false, 'Hello World');
+      expect(myFunction(2,2)).to.equal(4);
 
-describe('Be welcome to Mocha', function() {
+    });
+
+
+
 
 });
